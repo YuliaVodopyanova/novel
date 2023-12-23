@@ -11,10 +11,10 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.4.3
 
       - name: Set up Python
-        uses: actions/setup-python@v2.2.1
+        uses: actions/setup-python@v2.2.2
         with:
           python-version: 3.8
 
@@ -23,3 +23,6 @@ jobs:
 
       - name: Run tests
         run: pytest
+
+      - name: Set Output
+        run: echo "::set-env name=OUTPUT_VAR::some value"
