@@ -20,4 +20,4 @@ jobs:
     - name: Запуск тестов
       run: |
         cd 'novel' / 'game' / 'script.rpy'
-        
+        renpy автономный_режим=1
