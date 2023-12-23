@@ -1,28 +1,42 @@
-name: Run Tests
+name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  test:
+  code-style:
+    name: Code Style
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Code styling
+      run: |
+        bash rugpt3_amber/data/_stage_run_lint.sh
 
-      - name: Set up Python
-        uses: actions/setup-python@v2.2.2
-        with:
-          python-version: 3.8
+  run-core-tests:
+    name: Run core tests
+    runs-on: ubuntu-latest
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run tests
-        run: pytest
-
-      - name: Set Output
-        run: echo "::set-output name=OUTPUT_VAR::some value"
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Setup & run tests
+      run: |
+        export PYTHONPATH=$(pwd):$PYTHONPATH
+        python -m pip install --upgrade pip
+        python -m venv .venv
+        source .venv/bin/activate
+        pip install poetry
+        poetry update
+        python -m pytest tests
