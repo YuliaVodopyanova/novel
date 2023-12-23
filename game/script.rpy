@@ -377,7 +377,7 @@ label lasthope:
     "Что ж делать-то?..."
     menu:
         "Нарисовать цветочки с правого края":
-            play sound "<from 0 to 1>пишет.mp3"
+            play sound "sound/пишет.mp3"
             jump biletflowers
         "Почеркать листочек снизу":
             return
@@ -399,7 +399,7 @@ label biletmark:
     play sound "<from 0 to 1.5>формулу.mp3"
     m "Мда.."
     m "Видимо, придется все-таки как-то рассказывать."
-    play sound "перечеркнул.mp3"
+    play sound "sound/перечеркнул.mp3"
     scene bilet no mark
 
     m "Послушаю, как сдает Лиля. Может, как-нибудь поможет..."
@@ -409,14 +409,14 @@ label biletmark:
     show lily happy:
         xpos 210 ypos 100
         linear .7 xpos 1000 ypos 100
-    play sound "hm.mp3"
+    play sound "sound/hm.mp3"
     f "Сложное предложение - это..."
 
     scene bilet no mark
     with fade
     play sound "слеза.mp3"
     m "Ну, конечно, мне как обычно самый легкий билет попался!"
-    play sound "слеза.mp3"
+    play sound "sound/слеза.mp3"
 
     k "[m_name], ваше время вышло!"
     scene classroom
@@ -438,7 +438,7 @@ label biletmark:
             return
 
 label well:
-    play sound "broken.mp3" volume 5
+    play sound "audio/broken.mp3" volume 5
     scene her red
     with zoomin
     with pixellate
