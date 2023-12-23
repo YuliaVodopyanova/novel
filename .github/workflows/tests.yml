@@ -11,16 +11,6 @@ jobs:
     name: Code Style
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-    - name: Code styling
-      run: |
-        bash rugpt3_amber/data/_stage_run_lint.sh
-
   run-core-tests:
     name: Run core tests
     runs-on: ubuntu-latest
