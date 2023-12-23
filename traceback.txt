@@ -1,0 +1,30 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 386, in script
+    scene bilet flowers
+Exception: Image 'bilet' does not accept attributes 'flowers'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 386, in script
+    scene bilet flowers
+  File "C:\Users\HP\Downloads\renpy-8.1.3-sdk\renpy\ast.py", line 1562, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "C:\Users\HP\Downloads\renpy-8.1.3-sdk\renpy\ast.py", line 1391, in show_imspec
+    renpy.config.show(name,
+  File "C:\Users\HP\Downloads\renpy-8.1.3-sdk\renpy\exports.py", line 733, in show
+    if not base.find_target() and renpy.config.missing_show:
+  File "C:\Users\HP\Downloads\renpy-8.1.3-sdk\renpy\display\image.py", line 421, in find_target
+    self.target = target._duplicate(a)
+  File "C:\Users\HP\Downloads\renpy-8.1.3-sdk\renpy\display\core.py", line 499, in _duplicate
+    args.extraneous()
+  File "C:\Users\HP\Downloads\renpy-8.1.3-sdk\renpy\display\core.py", line 362, in extraneous
+    raise Exception("Image '{}' does not accept attributes '{}'.".format(
+Exception: Image 'bilet' does not accept attributes 'flowers'.
+
+Windows-10-10.0.22621 AMD64
+Ren'Py 8.1.3.23091805
+novel 1.0
+Sat Dec 23 10:23:12 2023
