@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 SCRIPT_PATH = Path(__file__).parent.parent / 'game' / 'script.rpy'
 
@@ -9,7 +10,6 @@ def test_jumps():
     """
   with open(SCRIPT_PATH, 'r') as f:
       content = f.read()
-      n_jumps = content.count('jump')
-      n_labels = content.count('label')
-      assert (n_jumps + 1) == n_labels
-                              
+      n_jumps = re.findall(r'jump\s+(.+)', content)
+      n_labels = re.findall(r'label\s+(.+)', content)
+      assert set(n_jumps) + 1 == set(n_labels)
