@@ -12,4 +12,4 @@ def test_jumps():
       content = f.read()
       n_jumps = re.findall(r'jump\s+(.+)', content)
       n_labels = re.findall(r'label\s+(.+)', content)
-      assert set(n_jumps) + 1 == set(n_labels)
+      assert set(n_jumps) == set(n_labels)
