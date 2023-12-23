@@ -1,16 +1,23 @@
-name: CI
-
+name: Тестирование новеллы на Ren'Py
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  code-style:
-    name: Code Style
+  test:
     runs-on: ubuntu-latest
-
-  run-core-tests:
-    name: Run core tests
-    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Установка Ren'Py
+      run: |
+        sudo apt-get update
+        sudo apt-get install renpy
+        
+    - name: Клонирование репозитория
+      uses: actions/checkout@v2
+      
+    - name: Запуск тестов
+      run: |
+        cd 'novel' / 'game' / 'script.rpy'
+        
